@@ -9,17 +9,19 @@ import profileRoutes from "./routes/profileRoutes.js";
 
 dotenv.config();
 connectDB();
+
 const app = express();
 
 // Middlewares
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://e-shop-frontend-git-main-shaik-afreen15s-projects.vercel.app"
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    // origin: [
+    //   "http://localhost:5173",
+    //   "https://e-shop-frontend-git-main-shaik-afreen15s-projects.vercel.app"
+    // ],
+    // methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    origin: true,
     credentials: true,
   })
 );
@@ -37,7 +39,9 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/profile", profileRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () =>
-  console.log(`Server running on port ${PORT}`)
-);
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () =>
+//   console.log(`Server running on port ${PORT}`)
+// );
+
+export default app;
