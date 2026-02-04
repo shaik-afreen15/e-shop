@@ -24,9 +24,7 @@ const Cart = () => {
           </h3>
 
           <div className="flex flex-col lg:flex-row gap-6">
-            {/* LEFT */}
             <div className="w-full lg:w-2/3">
-              {/* HEADER – desktop only */}
               <div className="hidden md:flex justify-between border-b pb-2 mb-4 text-xs font-semibold text-gray-600">
                 <p>PRODUCT</p>
                 <div className="flex gap-10">
@@ -42,7 +40,6 @@ const Cart = () => {
                   key={product.id}
                   className="flex flex-col md:flex-row md:items-center justify-between border-b py-4 gap-4"
                 >
-                  {/* PRODUCT */}
                   <div className="flex items-center gap-3 flex-1">
                     <img
                       src={product.image}

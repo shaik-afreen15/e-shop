@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productReducer from "./ProductSlice";
 import cartReducer from "./CartSlice";
-import searchReducer from "./SearchSlice";
+import searchReducer from "./SearchSlice"
 import wishlistReducer from "./wishlistSlice";
 import authReducer from './authSlice';
 
@@ -13,6 +13,6 @@ const store = configureStore({
     wishlist: wishlistReducer,
     auth: authReducer,
   },
-});
+});  
 
-export default store;
+export default store;                                                           

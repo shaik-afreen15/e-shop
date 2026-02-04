@@ -103,7 +103,7 @@ const Navbar = () => {
               {menuOpen && (
                 <div className="absolute right-0 top-6 bg-white border shadow-md rounded w-40 text-sm z-50">
                   
-                  {/* 🔥 ADMIN DASHBOARD */}
+                  {/* ADMIN DASHBOARD */}
                   {isAdmin && (
                     <button
                       onClick={() => {

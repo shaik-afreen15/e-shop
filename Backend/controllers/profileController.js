@@ -1,8 +1,5 @@
 import User from "../models/User.js";
 
-/* =========================
-   GET PROFILE
-========================= */
 export const getProfile = async (req, res) => {
   res.json({
     _id: req.user._id,
@@ -11,9 +8,7 @@ export const getProfile = async (req, res) => {
   });
 };
 
-/* =========================
-   UPDATE PROFILE
-========================= */
+
 export const updateProfile = async (req, res) => {
   const { name, email } = req.body;
 

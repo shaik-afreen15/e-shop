@@ -44,8 +44,8 @@ const Login = () => {
       // localStorage.setItem("currentUser", JSON.stringify(res.data.user));
 
       // // Update Redux state
-      // dispatch(loginSuccess(res.data.user));
-      navigate("/");
+      // // dispatch(loginSuccess(res.data.user));
+      // navigate("/");
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong")
     }

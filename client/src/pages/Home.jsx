@@ -5,8 +5,7 @@ import CategorySection from '../components/CategorySection'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../redux/ProductSlice'
 import ProductCard from '../components/ProductCard'
-import { Link } from 'react-router-dom'
-import Shop from "./Shop"
+import { Link } from 'react-router-dom' 
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -55,7 +54,13 @@ const Home = () => {
           </div>
         )}
       </div>
-      <Shop/>
+      
+      <div className="text-center mt-3 mb-3">
+        <Link to="/shop" className="text-red-600 font-semibold hover:underline">
+             View All Products →
+        </Link>
+      </div>
+
     </div>
   )
 }
