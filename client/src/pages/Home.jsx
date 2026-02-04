@@ -60,7 +60,6 @@ const Home = () => {
              View All Products →
         </Link>
       </div>
-
     </div>
   )
 }
