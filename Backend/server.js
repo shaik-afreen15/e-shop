@@ -12,11 +12,18 @@ connectDB();
 const app = express();
 
 // Middlewares
-app.use(cors({
-  origin: [ "http://localhost:5173", // Vite frontend
-  "https://e-shop-git-main-shaik-afreen15s-projects.vercel.app"],
-  credentials: true,
-}));
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://e-shop-frontend-git-main-shaik-afreen15s-projects.vercel.app"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // Test route
