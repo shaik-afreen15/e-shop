@@ -57,7 +57,7 @@ const Checkout = ({setOrder}) => {
   setError("")
 
   try {
-    await fetch("http://localhost:5000/api/orders", {
+    await fetch(`${VITE_API_URL}/api/products`), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const Checkout = ({setOrder}) => {
         items: cart.products,
         totalAmount: cart.totalPrice,
       }),
-    })
+    }
   } catch (err) {
     console.error("Order save failed", err)
     setError("Failed to place order. Please try again.")

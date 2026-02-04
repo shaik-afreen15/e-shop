@@ -15,7 +15,7 @@ const Order = () => {
       }
 
       try {
-        const res = await fetch("http://localhost:5000/api/orders/my-orders", {
+        const res = await fetch(`${VITE_API_URL}/api/orders/my-orders`, {
          headers: {
          Authorization: `Bearer ${token}`,
         },
@@ -54,7 +54,7 @@ const Order = () => {
 
   try {
     const res = await fetch(
-      `http://localhost:5000/api/orders/${orderId}`,
+      `${VITE_API_URL}/api/orders/${orderId}`,
       {
         method: "DELETE",
         headers: {
@@ -82,7 +82,7 @@ const Order = () => {
     if (!window.confirm("Cancel this order?")) return;
 
     const res = await fetch(
-      `http://localhost:5000/api/orders/${orderId}/cancel`,
+      `${VITE_API_URL}/api/orders/${orderId}/cancel`,
       {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },
