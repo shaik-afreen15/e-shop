@@ -13,7 +13,8 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-  origin: "http://localhost:5173", // Vite frontend
+  origin: [ "http://localhost:5173", // Vite frontend
+  "https://e-shop-git-main-shaik-afreen15s-projects.vercel.app"],
   credentials: true,
 }));
 app.use(express.json());
