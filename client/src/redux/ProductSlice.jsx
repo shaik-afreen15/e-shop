@@ -1,17 +1,19 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async () => {
-    const res = await axios.get (`${API_URL}/api/products`);
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch products");
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axios.get(`${API_URL}/api/products`);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data || "Failed to fetch products"
+      );
     }
-
-    return await res.json();
   }
 );
 
@@ -27,15 +29,14 @@ const productSlice = createSlice({
     builder
       .addCase(fetchProducts.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = action.payload.products || action.payload;
+        state.items = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       });
   },
 });
