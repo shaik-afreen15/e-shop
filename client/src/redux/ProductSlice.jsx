@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const VITE_API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const fetchProducts = createAsyncThunk(
-  "products/fetch",
+  "products/fetchProducts",
   async () => {
-    const res = await fetch(`${VITE_API_URL}/api/products`);
+    const res = await axios.get (`${API_URL}/api/products`);
 
     if (!res.ok) {
       throw new Error("Failed to fetch products");
