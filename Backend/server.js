@@ -16,12 +16,12 @@ const app = express();
 
 app.use(
   cors({
-    // origin: [
-    //   "http://localhost:5173",
-    //   "https://e-shop-frontend-git-main-shaik-afreen15s-projects.vercel.app"
-    // ],
+    origin: [
+      "http://localhost:5173",
+      "https://e-shop-frontend-git-main-shaik-afreen15s-projects.vercel.app"
+    ],
     
-    origin: process.env.CLIENT_URL,
+    // origin: process.env.CLIENT_URL,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   })
