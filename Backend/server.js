@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      // "https://e-shop-frontend-git-main-shaik-afreen15s-projects.vercel.app"
+      "https://e-shop-frontend-git-main-shaik-afreen15s-projects.vercel.app"
     ],
     
     // origin: process.env.CLIENT_URL,
