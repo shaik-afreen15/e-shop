@@ -1,13 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-
-const API_URL = import.meta.env.VITE_API_URL;
+import api from "../api/axios";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`${API_URL}/api/products`);
+      const res = await api.get("/api/products");
       return res.data;
     } catch (error) {
       return rejectWithValue(
@@ -16,6 +14,7 @@ export const fetchProducts = createAsyncThunk(
     }
   }
 );
+
 
 const productSlice = createSlice({
   name: "products",
