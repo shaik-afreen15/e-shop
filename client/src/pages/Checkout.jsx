@@ -7,6 +7,7 @@ const Checkout = ({setOrder}) => {
     const [billingToggle, setBillingToggle] = useState(true)
     const [shippingToggle, setShippingToggle] = useState(false)
     const [paymentToggle, setPaymentToggle] = useState(false)
+    const VITE_API_URL = import.meta.env.VITE_API_URL;
 
     const [paymentMethod, setPaymentMethod] = useState("")
     const [billingInfo, setBillingInfo] = useState({
@@ -56,23 +57,30 @@ const Checkout = ({setOrder}) => {
 
   setError("")
 
-  try {
-    await fetch(`${VITE_API_URL}/api/products`), {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        items: cart.products,
-        totalAmount: cart.totalPrice,
-      }),
-    }
-  } catch (err) {
-    console.error("Order save failed", err)
-    setError("Failed to place order. Please try again.")
-    return
+ try {
+  const res = await fetch(`${VITE_API_URL}/api/orders`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      items: cart.products,
+      totalAmount: cart.totalPrice,
+      shippingInformation: shippingInfo,
+      paymentMethod,
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error("Order request failed");
   }
+
+} catch (err) {
+  console.error("Order save failed", err);
+  setError("Failed to place order. Please try again.");
+  return;
+}
 
   const newOrder = {
     products: cart.products,

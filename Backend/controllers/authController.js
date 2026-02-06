@@ -18,7 +18,7 @@ export const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
     });
-
+    
     const token = jwt.sign(
   { id: user._id, role: user.role },
   process.env.JWT_SECRET,
@@ -54,7 +54,6 @@ export const loginUser = async (req, res) => {
   process.env.JWT_SECRET,
   { expiresIn: "1d" }
 );
-
 
     res.json({
       token,
