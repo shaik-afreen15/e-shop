@@ -22,7 +22,7 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-// ✅ THIS IS ENOUGH — NO app.options NEEDED
+// THIS IS ENOUGH — NO app.options NEEDED
 app.use(cors(corsOptions));
 
 app.use(express.json());
@@ -41,4 +41,4 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-export default app;
+export default app; 
