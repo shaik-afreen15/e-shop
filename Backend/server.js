@@ -12,19 +12,15 @@ connectDB();
 
 const app = express();
 
-const corsOptions = {
-  origin: [
-    "http://localhost:5173",
-    "https://e-shop-frontend-git-main-shaik-afreen15s-projects.vercel.app",
-    "https://e-shop-git-main-shaik-afreen15s-projects.vercel.app"
-  ],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-
-// THIS IS ENOUGH — NO app.options NEEDED
-app.use(cors(corsOptions));
+// ✅ Allow all origins
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use(express.json());
 
@@ -42,4 +38,4 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-export default app; 
+export default app;
