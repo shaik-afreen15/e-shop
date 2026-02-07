@@ -25,10 +25,10 @@ const Login = () => {
 
     try {
       const url = isLogin
-        ? "/api/auth/login"
-        : "/api/auth/register"
+        ? "api/auth/login"
+        : "api/auth/register"
 
-      const res = await api.post(url, {
+      const res = await api.post(`${process.env.BASE_URL}/${url}`, {
         email,
         password,
       })
