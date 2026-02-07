@@ -16,6 +16,7 @@ const corsOptions = {
   origin: [
     "http://localhost:5173",
     "https://e-shop-frontend-git-main-shaik-afreen15s-projects.vercel.app",
+    "https://e-shop-git-main-shaik-afreen15s-projects.vercel.app"
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
