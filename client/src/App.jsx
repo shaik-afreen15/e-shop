@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useState, lazy, Suspense, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "./redux/authSlice";
@@ -27,6 +27,16 @@ const Wishlist = lazy(() => import("./pages/Wishlist"));
 const Profile = lazy(() => import("./pages/Profile"));
 const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
 
+
+// ScrollToTop component
+function ScrollToTop() {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+  return null;
+}
+
 function App() {
   const [order, setOrder] = useState(null);
   const dispatch = useDispatch();
@@ -41,6 +51,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
 
       <div className="pt-32 min-h-screen">

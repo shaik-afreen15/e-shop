@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {
-  FaSearch,
-  FaShoppingCart,
-  FaUser,
-  FaTimes,
-  FaEllipsisV,
-} from "react-icons/fa";
+import { FaSearch, FaShoppingCart, FaUser, FaTimes, FaEllipsisV } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { clearSearchQuery, setSearchQuery } from "../redux/SearchSlice";
+import { clearCart } from "../redux/CartSlice";
+import { logout } from "../redux/authSlice";
 
 const Navbar = () => {
   const products = useSelector((state) => state.cart?.products || []);
@@ -39,12 +35,13 @@ const Navbar = () => {
     dispatch(clearSearchQuery());
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("currentUser");
-    setMenuOpen(false);
-    navigate("/login");
-  };
+const handleLogout = () => {
+  dispatch(logout());      // clears auth state + localStorage
+  dispatch(clearCart());   // 🔥 clears cart state
+  setMenuOpen(false);
+  navigate("/login");
+};
+
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">

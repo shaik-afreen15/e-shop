@@ -4,9 +4,11 @@ import { addToCart } from '../redux/CartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleWishlist } from '../redux/wishlistSlice'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const reduxUser = useSelector((state) => state.auth.user)
   const storedUser = JSON.parse(localStorage.getItem("currentUser"))
@@ -46,7 +48,13 @@ const ProductCard = ({ product }) => {
   const handleAddToCart = (e) => {
     e.preventDefault()
     e.stopPropagation()
-
+    
+    if (!userId) {
+      toast.warning("Please login to add items to cart")
+      navigate("/login")
+      return
+    }
+    
     dispatch(addToCart(product))
     toast.success("Product added to cart 🛒")
   }
